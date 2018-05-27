@@ -1,4 +1,5 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
 from urllib.request import urlopen
 import re
 import smtplib
@@ -11,8 +12,9 @@ to_address = ''
 subject = ''
 username = ''
 password = ''
-path = 'ipemail/'
-fname = 'last_ip.txt'
+#dir = '/'
+path = '/'
+fname = '.txt'
 
 fpath = os.path.join(path, fname)
 
@@ -36,7 +38,7 @@ print ("Our IP address is: ", ourIP)
 
 def send_email(ourIP, name='andri-pi3-02'):
 # Body of the email
-    body_text = ourIP + ' is {} IP address'.format(name)
+    body_text = '{} is connected to IPv4 Public Address: {}'.format(name, ourIP)
     msg = '\r\n'.join(['To: %s' % to_address, 'From: %s' % from_address, 'Subject: %s' % subject, '', body_text])
 
     # Actually send the email!
