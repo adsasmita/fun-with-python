@@ -11,7 +11,7 @@ subject = ''
 username = ''
 password = ''
 
-interfaces = ["Network Interface: {}, IPv4 Address: {}".format(i, ni.ifaddresses(i)[ni.AF_INET][0]['addr']) for i in ni.interfaces()]
+interfaces = ["Network Interface: {}, IPv4 Address: {}".format(i, ni.ifaddresses(i)[ni.AF_INET][0]['addr']) for i in ni.interfaces() if 'lan' in i]
 body_text = '\n'.join(interfaces)
 msg = '\r\n'.join(['To: %s' % to_address, 'From: %s' % from_address, 'Subject: %s' % subject, '', body_text])
 
