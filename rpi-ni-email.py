@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import netifaces as ni
 import smtplib
+import os
 
 # Setup our login credentials
 name = ''
@@ -15,7 +16,7 @@ fname = 'last_ni.txt'
 
 fpath = os.path.join(path, fname)
 
-if not os.path.exists(path):
+if not os.path.exists(fpath):
     os.mkdir(path)
     print ("created folder: {}".format(path))
     open(fpath, 'a').close()
