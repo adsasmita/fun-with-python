@@ -17,8 +17,9 @@ fname = 'last_ni.txt'
 fpath = os.path.join(path, fname)
 
 if not os.path.exists(fpath):
-    os.mkdir(path)
-    print ("created folder: {}".format(path))
+    if not os.path.exists(path):
+        os.mkdir(path)
+        print ("created folder: {}".format(path))
     open(fpath, 'a').close()
     print ("created file: {}".format(fpath))
     
