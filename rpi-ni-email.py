@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 import netifaces as ni
 import smtplib
@@ -11,8 +11,8 @@ to_address = ''
 subject = ''
 username = ''
 password = ''
-path = 'ipemail/'
-fname = 'last_ni.txt'
+path = '/'
+fname = '.txt'
 
 fpath = os.path.join(path, fname)
 
@@ -22,7 +22,7 @@ if not os.path.exists(fpath):
         print ("created folder: {}".format(path))
     open(fpath, 'a').close()
     print ("created file: {}".format(fpath))
-    
+
 interfaces = ["Network Interface: {}, IPv4 Address: {}".format(i, ni.ifaddresses(i)[ni.AF_INET][0]['addr']) for i in ni.interfaces() if 'lan' in i]
 body_text = '\n'.join(interfaces)
 msg = '\r\n'.join(['To: %s' % to_address, 'From: %s' % from_address, 'Subject: %s' % subject, '', body_text])
@@ -36,8 +36,9 @@ if last_ip == body_text:
     print("Our IP address has not changed.")
 else:
     print ("We have a new IP address.")
-    with open(fpath, 'wt') as last_ip:
-        last_ip.write(body_text)
+    f = open(fpath, 'w')
+    f.write(body_text)
+    f.close()
     print ("We have written the new IP address to the text file.")
     # Actually send the email!
     server = smtplib.SMTP('smtp.gmail.com:587')
@@ -45,4 +46,4 @@ else:
     server.login(username,password)
     server.sendmail(from_address, to_address, msg)
     server.quit()
-    print ("Our email has been sent!")    
+    print ("Our email has been sent!")   
