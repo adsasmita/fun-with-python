@@ -12,15 +12,15 @@ to_address = ''
 subject = ''
 username = ''
 password = ''
-#dir = '/'
 path = '/'
 fname = '.txt'
 
 fpath = os.path.join(path, fname)
 
-if not os.path.exists(path):
-    os.mkdir(path)
-    print ("created folder: {}".format(path))
+if not os.path.exists(fpath):
+    if not os.path.exists(path):
+        os.mkdir(path)
+        print ("created folder: {}".format(path))
     open(fpath, 'a').close()
     print ("created file: {}".format(fpath))
 
@@ -58,8 +58,9 @@ if last_ip == ourIP:
     print("Our IP address has not changed.")
 else:
     print ("We have a new IP address.")
-    with open(fpath, 'wt') as last_ip:
-        last_ip.write(ourIP)
+    f = open(fpath, 'w')
+    f.write(ourIP)
+    f.close()
     print ("We have written the new IP address to the text file.")
     send_email(ourIP)
     print ("Email sent")
