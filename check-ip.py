@@ -32,10 +32,14 @@ ap.add_argument('-l', '--loop', default=60, type=int,
 args = ap.parse_args()
 
 last_ip = '0.0.0.0'
-time.sleep(60)
+ip = '1.1.1.1'
+time.sleep(30)
 
 while True:
+    time.sleep(args.loop)
     ip = subprocess.Popen(['hostname', '-I'], stdout=subprocess.PIPE).stdout.read().decode()
+    if not ip:
+        continue
     if ip != last_ip:
         print('New result found: {}'.format(ip))
         print('Sending Email')
@@ -49,4 +53,3 @@ while True:
         print ("Email has been sent to: {}".format(to_address))  
         print ("Email subject: {}".format(subject))
         last_ip = ip
-    time.sleep(args.loop)
