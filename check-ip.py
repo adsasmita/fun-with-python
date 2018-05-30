@@ -12,12 +12,28 @@ subject = ''
 username = ''
 password = ''
 
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+import subprocess
+import time
+import argparse
+import smtplib
+
+name = ''
+from_address = ''
+to_address = ''
+subject = ''
+username = ''
+password = ''
+
 ap = argparse.ArgumentParser()
 ap.add_argument('-l', '--loop', default=60, type=int,
                 help='Time taken for each epoch evaluation (seconds)')
 args = ap.parse_args()
 
 last_ip = '0.0.0.0'
+time.sleep(60)
+
 while True:
     ip = subprocess.Popen(['hostname', '-I'], stdout=subprocess.PIPE).stdout.read().decode()
     if ip != last_ip:
