@@ -1,5 +1,3 @@
-import logging
-logging.getLogger('tensorflow').disabled = True
 from keras.applications.mobilenet import MobileNet
 from keras.preprocessing import image
 from keras.applications.mobilenet import preprocess_input, decode_predictions
@@ -11,12 +9,15 @@ devnull = open('os.devnull', 'w')
 ipaddr = subprocess.check_output(["hostname", "-I"]).decode("utf-8").strip()
 commd = "http://"+ipaddr+":9000/?action=snapshot"
 
+i = 1
 while True:
-    img_path = 'photo.jpg'
-    img = image.load_img(img_path, target_size=(224, 224))
-    x = image.img_to_array(img)
-    x = np.expand_dims(x, axis=0)
-    x = preprocess_input(x)
+	img_path = '{}.jpg'.format(i)
+	subprocess.run(["wget", "-O", img_path, commd], stdout=devnull, stderr=subprocess.STDOUT)
 
-    preds = model.predict(x)
-    print('Predicted:', decode_predictions(preds, top=3)[0])
+	img = image.load_img(img_path, target_size=(224, 224))
+	x = image.img_to_array(img)
+	x = np.expand_dims(x, axis=0)
+	x = preprocess_input(x)
+
+	preds = model.predict(x)
+	print('Predicted:', decode_predictions(preds, top=3)[0])
