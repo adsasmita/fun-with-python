@@ -1,3 +1,3 @@
-# fun_with_python
+# pyzzles
 
-My personal notes and collection of good python codes and algorithm implementations in python.
+Personal collection of good python codes, algorithm implementations, and solutions to various puzzles / brain-teasers.
