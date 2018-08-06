@@ -1,3 +1,3 @@
-# pyzzles
+# pyscripts
 
-Personal collection of good python codes, algorithm implementations, and solutions to various puzzles / brain-teasers.
+Personal collection of useful python snippets and scripts.
