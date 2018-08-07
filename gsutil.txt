@@ -1,0 +1,6 @@
+# bash
+gcloud auth login
+# copying to storage
+gsutil cp -r [folder] gs://[gstorage]/
+# copying from storage
+gsutil cp -r gs://[gstorage_bucket]/[folder] [local_dir]
