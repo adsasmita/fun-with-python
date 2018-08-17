@@ -1,6 +1,6 @@
 for f in *
 do
-echo "${f}/"
-echo "${f// /_}/"
-mv "${f}/" "${f// /_}/"
+echo "original: ${f}"
+echo "renamed to:  ${f//[ ()\[\]]/_}"
+mv "${f}" "${f//[ ()\[\]]/_}"
 done
