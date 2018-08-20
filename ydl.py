@@ -19,6 +19,6 @@ def run_cmd(cmds, **kwargs):
 print(f"There are {len(urls)} VIDEOS to be downloaded")
 for url in urls:
     print(f"Processing URL: {url}")
-    ydl_cmds = ["youtube-dl","-f","18","-i","-o","'%(upload_date)s - %(title)s.%(ext)s'", url]
+    ydl_cmds = ['youtube-dl','-f','18','-i','-o','"%(upload_date)s - %(title)s.%(ext)s"', url]
     run_cmd(ydl_cmds, stdout=PIPE, universal_newlines=True)
 
