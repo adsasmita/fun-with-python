@@ -1,5 +1,0 @@
-# download per channel, sorted by upload date (YYYYMMDD)
-youtube-dl -f 18 -i -o "%(upload_date)s - %(title)s.%(ext)s" https://www.youtube.com/user/ArtOfTheProblem/videos
-
-# download playlists in channel into separate folders
-youtube-dl -o -f 18 -i "%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s" https://www.youtube.com/playlist?list=PLB4D701646DAF0817
