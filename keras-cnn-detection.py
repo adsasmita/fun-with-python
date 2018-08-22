@@ -25,7 +25,7 @@ np.set_printoptions(precision=4, linewidth=100)
 
 
 
-def GRID_lenet(model_path,
+def my_lenet(model_path,
 			   model_weights_fname,
 			   img_width = 50,
 			   img_height = 50):
@@ -432,7 +432,7 @@ if __name__ == '__main__':
 
 	# Obtain Convolutional Neural Network Model
 
-	lenet = GRID_lenet(model_path = model_path,
+	lenet = my_lenet(model_path = model_path,
 					   model_weights_fname = model_weights_fname ,
 					   img_width = img_width,
 					   img_height = img_height)
