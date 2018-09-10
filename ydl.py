@@ -8,7 +8,7 @@ from subprocess import Popen, PIPE
 
 ap = argparse.ArgumentParser()
 ap.add_argument("-s","--source", type=str, required=True, help="Path to txt file containing video URLS")
-ap.add_argument("-f","--format", type=int, default=18, help="File formatting (ref: youtube-dl docs)")
+ap.add_argument("-f","--format", type=int, default=18, help="File format (18 or 22 for video, 140 or 251 for audio)")
 
 args = ap.parse_args()
 txt_path = args.source
