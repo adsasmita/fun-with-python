@@ -1,3 +1,3 @@
-# pyscripts
+# scripts
 
-Personal collection of useful python snippets and scripts.
+Personal collection of useful scripts.
